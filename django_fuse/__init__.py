@@ -61,7 +61,10 @@ class DirectoryResponse(object):
             items = self.items
 
         for name in items:
-            yield fuse.Direntry(name)
+            if isinstance(name, unicode):
+                yield fuse.Direntry(name.encode('utf-8'))
+            else:
+                yield fuse.Direntry(name)
 
 class AbstractFileResponse(object):
     def __init__(self, mode=0444):
