@@ -22,6 +22,7 @@ import views
 
 urlpatterns = patterns('',
    url(r'^$', views.index),
+   url(r'^hostname$', views.hostname_symlink),
    url(r'^hostname\.txt$', views.hostname),
    url(r'^subdir$', views.subdir),
    url(r'^subdir/(a|b|c)\.txt$', views.letter_file),

@@ -16,14 +16,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from django_fuse import DirectoryResponse, FileResponse, WrappedFileResponse
+from django_fuse import DirectoryResponse, FileResponse, WrappedFileResponse, \
+    SymlinkResponse
 
 def index():
     """
     Demonstrating a simple list-based directory index.
     """
 
-    items = ['hostname.txt', 'subdir']
+    items = ['hostname', 'hostname.txt', 'subdir']
     return DirectoryResponse(items)
 
 def hostname():
@@ -32,6 +33,13 @@ def hostname():
     """
 
     return WrappedFileResponse('/etc/hostname')
+
+def hostname_symlink():
+    """
+    Demonstrating returning a symlink.
+    """
+
+    return SymlinkResponse('/etc/hostname')
 
 def subdir():
     """
