@@ -23,7 +23,7 @@ import errno
 
 from django_fuse.utils import DefaultStat
 
-__all__ = ('DirectoryResponse', 'FileResponse', 'WrappedFileResponse')
+__all__ = ('DirectoryResponse', 'FileResponse', 'WrappedFileResponse', 'SymlinkResponse')
 
 class DirectoryResponse(object):
     def __init__(self, items, count=None, mode=0555):
@@ -125,3 +125,15 @@ class WrappedFileResponse(AbstractFileResponse):
 
     def fgetattr(self):
         return os.fstat(self.file.fileno())
+
+class SymlinkResponse(object):
+    def __init__(self, target):
+        self.target = target
+
+    def getattr(self):
+        st = DefaultStat()
+        st.st_mode = stat.S_IFLNK | 0777
+        return st
+
+    def readlink(self):
+        return self.target

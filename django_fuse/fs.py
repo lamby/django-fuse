@@ -73,6 +73,10 @@ class DjangoFs(fuse.Fuse):
     def rename(self, response, target):
         return -errno.EACCES
 
+    @render
+    def readlink(self, response):
+        return response.readlink()
+
     # Stateful-file calls - no need to route them as we have already created
     # a stateful object fileobj for these.
 
