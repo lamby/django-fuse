@@ -26,7 +26,7 @@ from django_fuse.utils import DefaultStat
 __all__ = ('DirectoryResponse', 'FileResponse', 'WrappedFileResponse', 'SymlinkResponse')
 
 class DirectoryResponse(object):
-    def __init__(self, items, count=None, mode=0555):
+    def __init__(self, items=(), count=None, mode=0555):
         self.items = items
         self.count = count
         self.mode = mode
@@ -49,9 +49,6 @@ class DirectoryResponse(object):
     def readdir(self):
         yield fuse.Direntry('.')
         yield fuse.Direntry('..')
-
-        if self.items is None:
-            return
 
         if callable(self.items):
             items = self.items()
