@@ -41,10 +41,8 @@ class DirectoryResponse(object):
             else:
                 st.st_nlink = 2 + self.count
         else:
-            # Count manually
-            st.st_nlink = 0
-            for elem in self.readdir():
-                st.st_nlink += 1
+            # Set a fallback nlink
+            st.st_nlink = 1
 
         return st
 
