@@ -134,4 +134,4 @@ class SymlinkResponse(object):
         return st
 
     def readlink(self):
-        return self.target
+        return self.target.encode('utf-8')
