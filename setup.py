@@ -2,7 +2,7 @@
 from distutils.core import setup
 
 setup(
-    name='django_fuse',
+    name='django-fuse',
     packages=[
         'django_fuse',
         'django_fuse.management',
