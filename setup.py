@@ -1,12 +1,15 @@
-# -*- coding: utf-8 -*-
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
     name='django-fuse',
-    version=1,
-    packages=[
-        'django_fuse',
-        'django_fuse.management',
-        'django_fuse.management.commands',
-    ],
+
+    url="https://chris-lamb.co.uk/projects/django-fuse",
+    version='1',
+    description="Abstractions for building FUSE filesystems using Django",
+
+    author="Chris Lamb",
+    author_email='chris@chris-lamb.co.uk',
+    license="BSD",
+
+    packages=find_packages(),
 )
