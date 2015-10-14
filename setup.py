@@ -4,7 +4,7 @@ setup(
     name='django-fuse',
 
     url="https://chris-lamb.co.uk/projects/django-fuse",
-    version='2',
+    version='2.0.1',
     description="Abstractions for building FUSE filesystems using Django",
 
     author="Chris Lamb",
